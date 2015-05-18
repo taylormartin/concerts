@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Concerts
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    nav.navbar.navbar-default
+     .container-fluid
+       .navbar-header
+         .navbar-brand= link_to "Home", root_path
+       ul.nav.navbar-nav.pull-right
+         -if current_user
+           / Signed in
+           li= link_to current_user.email, edit_user_registration_path
+           li= link_to "Log Out", destroy_user_session_path, method: :delete
+         -else
+           / Not signed in
+           li= link_to "Log In/Sign Up", new_user_session_path
+    .container-fluid.flash
+      - flash.each do |name, msg|
+        div class="alert alert-#{flash_class name}"
+          a.close data-dismiss="alert" &times;
+          div id="flash_#{flash_class name}"
+            = msg
+    .container-fluid
+      = yield 
