@@ -12,7 +12,6 @@ var CommentBox = React.createClass({
 
   handleClick: function() {
     var cityValue = this.state.cityValue;
-    debugger;
   },
 
   render: function() {
