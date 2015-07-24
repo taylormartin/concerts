@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  mount API::Base, at: "/"
+  mount GrapeSwaggerRails::Engine, at: "/documentation"
+
 end
